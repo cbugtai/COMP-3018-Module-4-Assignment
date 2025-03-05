@@ -1,10 +1,11 @@
-import express, { Router } from "express"; 
+import express, { Router } from "express";
+import * as loanController from "../controllers/loanController"
 
 const router: Router = express.Router();
 
-router.post("/")
-router.put("/:id/review")
-router.get("/")
-router.put("/:id/approve")
+router.post("/", loanController.createLoan)
+router.put("/:id/review", loanController.reviewLoan)
+router.get("/", loanController.getLoans)
+router.put("/:id/approve", loanController.approveLoan)
 
 export default router;

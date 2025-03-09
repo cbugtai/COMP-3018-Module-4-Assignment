@@ -24,46 +24,6 @@ export class AppError extends Error {
 }
 
 /**
- * Class representing a repository error.
- * Extends the built-in Error class to include an error code.
- */
-export class RepositoryError extends AppError {
-    /**
-     * Creates a new RepositoryError instance.
-     * @param {string} message - The error message.
-     * @param {string} code - The error code.
-     * @param {number} code - The the http response code.
-     */
-    constructor(
-        message: string,
-        code: string,
-        statusCode: number = HTTP_STATUS.INTERNAL_SERVER_ERROR
-    ) {
-        super(message, code, statusCode);
-    }
-}
-
-/**
- * Class representing a service error.
- * Extends the built-in Error class to include an error code.
- */
-export class ServiceError extends AppError {
-    /**
-     * Creates a new ServiceError instance.
-     * @param {string} message - The error message.
-     * @param {string} code - The error code.
-     * @param {number} statusCode - The http response code.
-     */
-    constructor(
-        message: string,
-        code: string = "SERVICE_ERROR",
-        statusCode: number = HTTP_STATUS.INTERNAL_SERVER_ERROR
-    ) {
-        super(message, code, statusCode);
-    }
-}
-
-/**
  * Class representing a authentication error.
  * Extends the built-in Error class to include an error code.
  */

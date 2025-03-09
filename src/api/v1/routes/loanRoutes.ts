@@ -5,6 +5,8 @@ import authenticate from "../middleware/authenticate";
 
 const router: Router = express.Router();
 
+// URL/api/v1/loans
+
 router.post(
     "/",
     authenticate,

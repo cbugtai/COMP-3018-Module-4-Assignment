@@ -3,7 +3,6 @@ import morgan from "morgan";
 
 import setupSwagger from "../config/swagger";
 import loanRoutes from "../src/api/v1/routes/loanRoutes"
-import userRoutes from "../src/api/v1/routes/userRoutes";
 import adminRoutes from "../src/api/v1/routes/adminRoutes"
 import errorHandler from "./api/v1/middleware/errorHandler";
 
@@ -15,7 +14,6 @@ app.use(express.json());
 
 //routes
 app.use("/api/v1/loans", loanRoutes);
-app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/admin", adminRoutes);
 
 app.use(errorHandler);

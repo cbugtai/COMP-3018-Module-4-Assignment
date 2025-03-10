@@ -22,7 +22,7 @@ interface AuthorizationOptions {
  */
 const isAuthorized = (opts: AuthorizationOptions): MiddlewareFunction => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const role = res.locals.role;
+        const role:string = res.locals.role;
 
         if (!role) {
             return next(

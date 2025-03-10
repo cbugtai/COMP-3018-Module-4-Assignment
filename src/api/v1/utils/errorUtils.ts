@@ -2,7 +2,7 @@ import { HTTP_STATUS } from "../../../constants/httpConstants";
 
 
 /** Default error code used when no specific code can be determined */
-export const UNKNOWN_ERROR_CODE = "UNKNOWN_ERROR";
+export const UNKNOWN_ERROR_CODE: string = "UNKNOWN_ERROR";
 
 /**
  * Type guard to check if an unknown value is an Error object.

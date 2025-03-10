@@ -22,7 +22,7 @@ interface AuthorizationOptions {
  */
 const isAuthorized = (opts: AuthorizationOptions): MiddlewareFunction => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const role:string = res.locals.role;
+        const role: string | undefined = res.locals.role;
 
         if (!role) {
             return next(
@@ -34,7 +34,7 @@ const isAuthorized = (opts: AuthorizationOptions): MiddlewareFunction => {
         }
 
         // Allow access if the user's role is in the permitted roles list
-        if (opts.hasRole.includes(role)) {
+        if (opts.hasRole.includes(role as "admin" | "manager" | "officer" | "user")) {
             return next();
         }
 

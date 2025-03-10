@@ -9,14 +9,6 @@ type MiddlewareFunction = (
 
 interface AuthorizationOptions {
     hasRole: Array<"admin" | "manager" | "officer" | "user">;
-
-    /**
-     * When set to true, allows users to access their own resources
-     * regardless of their role
-     * 
-     * @default false
-     */
-    allowSameUser?: boolean;
 }
 
 /**
@@ -32,11 +24,6 @@ const isAuthorized = (opts: AuthorizationOptions): MiddlewareFunction => {
     return (req: Request, res: Response, next: NextFunction) => {
         const { role, uid } = res.locals;
         const userId: string = req.params.uid;
-
-        // Allow access if the user is accessing their own resource
-        if (opts.allowSameUser && userId && uid === userId) {
-            return next();
-        }
 
         if (!role) {
             return next(

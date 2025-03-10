@@ -1,17 +1,59 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
+import { successResponse } from "../models/responseModel";
+import { HTTP_STATUS } from "../../../constants/httpConstants";
 
-export const createLoan = (req: Request, res: Response) => {
-    res.status(200).send("Loan Created");
+/**
+ * @description Create Loan
+ * @route POST /
+ */
+export const createLoan = (req: Request, res: Response, next: NextFunction) => {
+    try{
+        res.status(HTTP_STATUS.CREATED).json(
+            successResponse(undefined, "Loan Created")
+        );
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const reviewLoan = (req: Request, res: Response) => {
-    res.status(200).send("Loan Reviewed");
+/**
+ * @description Review Loan
+ * @route PUT /:id/review
+ */
+export const reviewLoan = (req: Request, res: Response, next: NextFunction) => {
+    try{
+        res.status(HTTP_STATUS.OK).json(
+            successResponse(undefined, "Loan Reviewed")
+        );
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const getLoans = (req: Request, res: Response) => {
-    res.status(200).send("Loans Retrieved");
+/**
+ * @description Get All Loans
+ * @route GET /
+ */
+export const getLoans = (req: Request, res: Response, next: NextFunction) => {
+    try{
+        res.status(HTTP_STATUS.OK).json(
+            successResponse(undefined, "Loans Retrieved")
+        );
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const approveLoan = (req: Request, res: Response) => {
-    res.status(200).send("Loan Approved");
+/**
+ * @description Approve Loan
+ * @route POST /:id/approve
+ */
+export const approveLoan = (req: Request, res: Response, next: NextFunction) => {
+    try{
+        res.status(HTTP_STATUS.OK).json(
+            successResponse(undefined, "Loan Approved")
+        );
+    } catch (error) {
+        next(error);
+    }
 };

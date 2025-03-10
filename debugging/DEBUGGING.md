@@ -52,20 +52,31 @@
 -   I suppose it shows me that middelware doesnt have to be anything complicated, it can be simple a function 
     that changes/checks a piece of data from the request then passes it off to the next one.
 
-## Scenario 3: [Title of the Scenario]
+## Scenario 3: Loan Application Endpoints
 
--   **Breakpoint Location:** [File and line number]
--   **Objective:** [What you are investigating or trying to understand]
+-   **Breakpoint Location:** authentication.ts Line 43, authorization.ts Line 25 and loanController.ts Line 53
+-   **Objective:** Trying to understand what my endpoints are doing
 
 ### Debugger Observations
 
--   **Variable States:** [List key variables and their values]
--   **Call Stack:** [Summarize the function sequence leading to the breakpoint]
--   **Behavior:** [Describe what happens at this point in the program]
+-   **Variable States:** token = {a valid token}
+                         res.locals.role = "manager"
+                         res.locals.uid = "ZlXaDh73w3P0dKwj2NbsNEUuYe92"
+                         AuthorizationOptions.hasRole = [ "admin", "manager" ]
+                         res.locals.role = "manager"
+-   **Call Stack:** Approve Loan endpoint gets called with valid token and role
+-   **Behavior:** The authenticate gets called, verifies the token and attaches the user's role of manager to the request then passes
+                it on to the isAuthorized. The isAuthorized is called with { hasRole: ["admin", "manager"] }, the isAuthorized compares the
+                role on the request res.locals.role = "manager" to the Authorization otions it got called with [ "admin", "manager" ] and
+                checks if the users role is included then passes the request to the next function. Once the controller gets called it simply
+                approves the request, i didnt include any services. So in this case, once the requests passes the authentication and authorization
+                middleware the controller applies the 200 status code to the response with the message "Loan Approved".
 
 ### Analysis
 
--   What did you learn from this scenario?
--   Did you observe any unexpected behavior? If so, what might be the cause?
--   Are there areas for improvement or refactoring in this part of the code?
--   How does this enhance your understanding of the overall project?
+-   I learned the step by step breakdown of my endpoint
+-   Everything worked as expected, I got a successful response in postman
+-   possibly, theres some unused code on the authentication function and the controllers basically dont do anything
+    but other that that, i cant think of any ways to imporve it at the moment
+-   Just knowing the call stack of one of my endpoints gives me a general idea of what the other endpoints in my project 
+    are supposed to be doing letting me quickly debug them if necessary. 

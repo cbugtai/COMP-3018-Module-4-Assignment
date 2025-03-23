@@ -1,5 +1,9 @@
 import express, { Express } from "express";
 import morgan from "morgan";
+import dotenv from "dotenv";
+
+// Load environment variables BEFORE your internal imports!
+dotenv.config();
 
 import setupSwagger from "../config/swagger";
 import loanRoutes from "../src/api/v1/routes/loanRoutes"

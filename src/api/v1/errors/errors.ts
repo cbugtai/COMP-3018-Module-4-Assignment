@@ -62,3 +62,23 @@ export class AuthorizationError extends AppError {
         super(message, code, statusCode);
     }
 }
+
+/**
+ * Class representing a authorization error.
+ * Extends the built-in Error class to include an error code.
+ */
+export class FirebaseError extends AppError {
+    /**
+     * Creates a new AuthorizationError instance.
+     * @param {string} message - The error message.
+     * @param {string} code - The error code.
+     * @param {number} statusCode - The http response code.
+     */
+    constructor(
+        message: string,
+        code: string = "FIREBASE_ERROR",
+        statusCode: number = HTTP_STATUS.INTERNAL_SERVER_ERROR
+    ) {
+        super(message, code, statusCode);
+    }
+}

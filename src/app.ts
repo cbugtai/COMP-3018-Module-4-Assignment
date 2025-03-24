@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import cors from "cors";
 
 // Load environment variables BEFORE your internal imports!
 dotenv.config();
@@ -15,6 +16,7 @@ const app: Express = express();
 
 setupSwagger(app);
 app.use(helmet());
+app.use(cors());
 app.use(morgan("combined"));
 app.use(express.json());
 

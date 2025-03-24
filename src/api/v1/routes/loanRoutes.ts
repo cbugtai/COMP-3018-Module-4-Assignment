@@ -16,9 +16,9 @@ const router: Router = express.Router();
  * /api/v1/loans/:
  *   post:
  *     summary: Allows a user to create a loan
- *     tags: [Loans]
+ *     tags: [Loan]
  *     security:
- *       - berearAuth: []
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -51,9 +51,9 @@ router.post(
  * /api/v1/loans/{id}/review:
  *   put:
  *     summary: Allows an officer to review a loan
- *     tags: [Loans]
+ *     tags: [Loan]
  *     security:
- *       - berearAuth: []
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -87,9 +87,9 @@ router.put(
  * /api/v1/loans/:
  *   get:
  *     summary: Allows an officer or manager to retrive all loans
- *     tags: [Loans]
+ *     tags: [Loan]
  *     security:
- *       - berearAuth: []
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: A list of loans
@@ -120,7 +120,7 @@ router.get(
  *     summary: Allows a manager to approve a loan
  *     tags: [Loans]
  *     security:
- *       - berearAuth: []
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

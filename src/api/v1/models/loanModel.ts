@@ -5,7 +5,7 @@
  * @openapi
  * components:
  *   schemas:
- *     Item:
+ *     Loan:
  *       type: object
  *       properties:
  *         id:

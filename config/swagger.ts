@@ -1,23 +1,13 @@
 import swaggerUi from "swagger-ui-express";
-import swaggerJsDoc, { Options } from "swagger-jsdoc";
+// import swagger ui middleware
 import { Express } from "express";
+import { generateSwaggerDocs } from "./swaggerOptions";
 
-const swaggerOptions: Options = {
-	definition: {
-		openapi: "3.0.0",
-		info: {
-			title: "API Documentation",
-			version: "1.0.0",
-		},
-	},
-	apis: ["./src/api/v1/routes/*.ts"], // Path to the API docs when routes are in separate files
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const swaggerDocs: any = swaggerJsDoc(swaggerOptions);
-
+// serve swagger in apiDocs directory
 const setupSwagger = (app: Express): void => {
-	app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    const swaggerDocs: object = generateSwaggerDocs();
+    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 };
 
+// export swagger endpoint for Express app
 export default setupSwagger;

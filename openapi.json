@@ -163,7 +163,7 @@
       "put": {
         "summary": "Allows a manager to approve a loan",
         "tags": [
-          "Loans"
+          "Loan"
         ],
         "security": [
           {

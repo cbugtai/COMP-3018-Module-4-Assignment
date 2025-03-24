@@ -118,7 +118,7 @@ router.get(
  * /api/v1/loans/{id}/approve:
  *   put:
  *     summary: Allows a manager to approve a loan
- *     tags: [Loans]
+ *     tags: [Loan]
  *     security:
  *       - bearerAuth: []
  *     parameters:

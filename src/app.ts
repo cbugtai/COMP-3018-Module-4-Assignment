@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import helmet from "helmet";
 
 // Load environment variables BEFORE your internal imports!
 dotenv.config();
@@ -13,6 +14,7 @@ import errorHandler from "./api/v1/middleware/errorHandler";
 const app: Express = express();
 
 setupSwagger(app);
+app.use(helmet());
 app.use(morgan("combined"));
 app.use(express.json());
 

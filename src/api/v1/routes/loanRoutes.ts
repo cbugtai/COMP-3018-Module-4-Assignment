@@ -18,11 +18,20 @@ const router: Router = express.Router();
  *     summary: Allows a user to create a loan
  *     tags: [Loans]
  *     security:
- *       - Authentication: Bearer {Valid Token}
- *       - Authorization: ["admin","user"]
+ *       - berearAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Loan'
  *     responses:
  *       201:
  *         description: Loan Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Loan'
  *       401:
  *         description: Invalid Token
  *       403:
@@ -39,16 +48,26 @@ router.post(
  * @description Review a loan
  * 
  * @openapi
- * /api/v1/loans/:id/review:
+ * /api/v1/loans/{id}/review:
  *   put:
  *     summary: Allows an officer to review a loan
  *     tags: [Loans]
  *     security:
- *       - Authorization: Bearer {Valid Token}
- *       - Authorization: ["admin","officer"]
+ *       - berearAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Loan ID to be reviewed
  *     responses:
  *       200:
  *         description: Loan Reviewed
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Loan'
  *       401:
  *         description: Invalid Token
  *       403:
@@ -70,15 +89,20 @@ router.put(
  *     summary: Allows an officer or manager to retrive all loans
  *     tags: [Loans]
  *     security:
- *       - Authorization: Bearer {Valid Token}
- *       - Authorization: ["admin","officer", "manager"]
+ *       - berearAuth: []
  *     responses:
  *       200:
- *         description: Loan Retrieved
+ *         description: A list of loans
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: "#/components/schemas/Loan"
  *       401:
  *         description: Invalid Token
  *       403:
- *         description: Insufficient Role
+ *         description: Insufficient Role 
  */
 router.get(
     "/",
@@ -91,16 +115,26 @@ router.get(
  * @description Approve Loan
  * 
  * @openapi
- * /api/v1/loans/:id/approve:
+ * /api/v1/loans/{id}/approve:
  *   put:
- *     summary: Allows a manager to apporve a loan
+ *     summary: Allows a manager to approve a loan
  *     tags: [Loans]
  *     security:
- *       - Authorization: Bearer {Valid Token}
- *       - Authorization: ["admin", "manager"]
+ *       - berearAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Loan ID to be approved
  *     responses:
  *       200:
  *         description: Loan Approved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Loan'
  *       401:
  *         description: Invalid Token
  *       403:

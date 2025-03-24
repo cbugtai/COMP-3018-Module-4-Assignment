@@ -8,10 +8,10 @@ const swaggerOptions: swaggerJsDoc.Options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Task Management API Documentation",
+            title: "Loan Monitoring API Documentation",
             version: "1.0.0",
             description:
-                "This is the API documentation for the Task Management applciation.",
+                "This is the API documentation for the High-Risk Loan Application Monitoring System.",
         },
         server: [
             {
